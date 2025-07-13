@@ -10,7 +10,8 @@
       --primary: #2563eb;
       --dark: #1e293b;
       --light: #f8fafc;
-      --gray: #94a3b8;
+      --gray: #64748b;
+      --shadow-light: rgba(0,0,0,0.1);
     }
     
     body {
@@ -36,7 +37,7 @@
       font-size: 2.5rem;
       font-weight: 600;
       color: var(--primary);
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.5rem;
       position: relative;
       display: inline-block;
     }
@@ -52,6 +53,13 @@
       border-radius: 2px;
     }
     
+    p.subtitle {
+      color: var(--gray);
+      font-size: 1.1rem;
+      margin-top: 0;
+      max-width: 600px;
+    }
+    
     .work-list {
       list-style: none;
       padding: 0;
@@ -60,20 +68,33 @@
     
     .work-item {
       background: white;
-      margin-bottom: 1rem;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      transition: transform 0.2s, box-shadow 0.2s;
+      margin-bottom: 1.5rem;
+      padding: 1.75rem 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 1px 6px var(--shadow-light);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: default;
     }
     
-    .work-item:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    .work-item:hover,
+    .work-item:focus-within {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3);
     }
     
     .work-item strong {
       color: var(--primary);
+      font-weight: 600;
+      font-size: 1.2rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    
+    .work-item p {
+      color: var(--dark);
+      font-size: 1rem;
+      margin: 0;
+      line-height: 1.5;
     }
     
     .back-link {
@@ -83,16 +104,21 @@
       text-decoration: none;
       font-weight: 500;
       transition: color 0.2s;
+      font-size: 1rem;
     }
     
-    .back-link:hover {
+    .back-link:hover,
+    .back-link:focus-visible {
       color: #1d4ed8;
       text-decoration: underline;
+      outline-offset: 4px;
+      outline: 2px solid #1d4ed8;
     }
     
     @media (max-width: 640px) {
       .container {
         margin: 2rem auto;
+        padding: 0 1rem;
       }
       
       h1 {
@@ -102,33 +128,35 @@
   </style>
 </head>
 <body>
-  <div class="container">
+  <main class="container" role="main" aria-label="Portfolio dei lavori di flumo24">
     <header>
       <h1>Portfolio Lavori</h1>
-      <p>Elenco dei miei progetti recenti e lavori significativi.</p>
+      <p class="subtitle">Qui puoi vedere alcuni dei miei progetti più recenti e significativi, sviluppati con passione e professionalità nel mondo Minecraft e oltre.</p>
     </header>
     
     <ul class="work-list">
-      <li class="work-item">
-        <strong>Server Minecraft Survival, KitPvP, BedWars customizzato (FLUMOMC)</strong>
-        <p>Creazione e gestione di un server Minecraft con meccaniche custom su misura e personalizzate.</p>
+      <li class="work-item" tabindex="0" aria-label="Server Minecraft Survival, KitPvP, BedWars customizzato FLUMOMC">
+        <strong>Server Minecraft Survival, KitPvP e BedWars Customizzato (FLUMOMC)</strong>
+        <p>Progettazione, sviluppo e gestione completa di un server Minecraft con meccaniche uniche e personalizzate, tra cui modalità di gioco Survival, KitPvP e BedWars, con plugin sviluppati su misura per migliorare l’esperienza degli utenti.</p>
       </li>
-      <li class="work-item">
+      
+      <li class="work-item" tabindex="0" aria-label="Texture Pack crystalpackarea per Minecraft">
         <strong>Texture Pack "crystalpackarea.zip"</strong>
-        <p>Sviluppo di un pacchetto texture personalizzato per Minecraft a nome del team su cui lavoro, 
-          questa pack ancora in fase di sviluppo presenta item totalmente ridisegnati e adatti al Crystal pvp.</p>
+        <p>Sviluppo di un pacchetto texture originale dedicato al Crystal PvP, con tutti gli item completamente ridisegnati in stile PvP, per offrire un’esperienza di gioco visivamente migliorata e ottimizzata.</p>
       </li>
-      <li class="work-item">
-        <strong>Bot Discord In Python per diversi server. Tra cui Il mio, e Server di streamer</strong>
-        <p>Realizzazione di un bot Discord su misura con funzionalità specifiche per la community.</p>
+      
+      <li class="work-item" tabindex="0" aria-label="Bot Discord personalizzati in Python">
+        <strong>Bot Discord personalizzati in Python per varie community</strong>
+        <p>Realizzazione di bot Discord su misura con funzionalità avanzate per la gestione e la moderazione di server, inclusi comandi personalizzati e automazioni specifiche per streamer e community di gioco.</p>
       </li>
-      <li class="work-item">
+      
+      <li class="work-item" tabindex="0" aria-label="Design grafico per community Minecraft">
         <strong>Design grafico per community Minecraft</strong>
-        <p>Creazione grafiche, loghi e banner per la community Italiana.</p>
+        <p>Creazione di loghi, banner e grafiche personalizzate per community italiane di Minecraft, con attenzione a stile, coerenza visiva e branding.</p>
       </li>
     </ul>
     
     <a href="index.html" class="back-link">← Torna alla home</a>
-  </div>
+  </main>
 </body>
 </html>
