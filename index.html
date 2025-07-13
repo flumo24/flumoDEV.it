@@ -3,23 +3,207 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>flumo24, Dev/manager. - Bio</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>flumo24 | Sviluppatore Minecraft & Manager Community</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <style>
+    :root {
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --dark: #1e293b;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --light-gray: #e2e8f0;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: var(--light);
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+    }
+    
+    .profile-header {
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .tagline {
+      font-size: 1.1rem;
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+    
+    .location {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: var(--gray);
+      margin-bottom: 2rem;
+    }
+    
+    .bio {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+    
+    h2 {
+      font-size: 1.5rem;
+      color: var(--primary-dark);
+      margin: 2rem 0 1rem;
+      border-bottom: 2px solid var(--light-gray);
+      padding-bottom: 0.5rem;
+    }
+    
+    .projects-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem 0;
+    }
+    
+    .project-item {
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border-left: 3px solid var(--primary);
+      background-color: rgba(59, 130, 246, 0.05);
+      border-radius: 0 4px 4px 0;
+    }
+    
+    .project-item a {
+      color: var(--primary-dark);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    
+    .project-item a:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+    
+    .btn-container {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    
+    .btn:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+    }
+    
+    .btn-outline:hover {
+      background: rgba(59, 130, 246, 0.1);
+    }
+    
+    @media (max-width: 640px) {
+      .container {
+        margin: 2rem auto;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .btn-container {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <h1>flumo24</h1>
-    <p><strong>Posizione:</strong> Italia</p>
-    <p>Mi chiamo Luca, conosciuto online come <strong>flumo24</strong>. Lavoro come sviluppatore nel settore Minecraft, specializzato in creazione di texture, sviluppo Discord, grafica digitale e plugin personalizzati.</p>
-    <h2>Progetti su misura per i clienti e progetti Discord come Bot e server.</h2>
-    <ul>
-      <li>Network Owner su Pack Area: <a href="https://discord.gg/ndWg3nxysV" target="_blank">discord.gg/ndWg3nxysV</a></li>
-      <li>Manager della community MrCat: <a href="https://discord.gg/NZ7tvdNPG4" target="_blank">discord.gg/NZ7tvdNPG4</a></li>
-      <li>Ex-Founder di flumoMC: <a href="https://discord.gg/ShtScadYRV" target="_blank">discord.gg/ShtScadYRV</a></li>
-      <li>EX-Mod su Moon Community: <a href="https://discord.gg/NscV8S2seG" target="_blank">discord.gg/NscV8S2seG</a></li>
+    <header class="profile-header">
+      <h1>flumo24</h1>
+      <p class="tagline">Sviluppatore Minecraft & Manager di Community</p>
+      <div class="location">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        <span>Italia</span>
+      </div>
+    </header>
+    
+    <div class="bio">
+      <p>Ciao, sono Luca, conosciuto online come <strong>flumo24</strong>. Sono uno sviluppatore specializzato nell'ecosistema Minecraft, con competenze in:</p>
+      <ul>
+        <li>Creazione di texture pack personalizzati</li>
+        <li>Sviluppo di bot e applicazioni Discord</li>
+        <li>Grafica digitale per community</li>
+        <li>Sviluppo di plugin Minecraft su misura</li>
+        <li>Gestione e moderazione di community</li>
+      </ul>
+    </div>
+    
+    <h2>Esperienze nelle Community</h2>
+    <ul class="projects-list">
+      <li class="project-item">
+        <strong>Network Owner</strong> su Pack Area: 
+        <a href="https://discord.gg/ndWg3nxysV" target="_blank">discord.gg/ndWg3nxysV</a>
+      </li>
+      <li class="project-item">
+        <strong>Community Manager</strong> per MrCat: 
+        <a href="https://discord.gg/NZ7tvdNPG4" target="_blank">discord.gg/NZ7tvdNPG4</a>
+      </li>
+      <li class="project-item">
+        <strong>Founder</strong> di flumoMC (ex): 
+        <a href="https://discord.gg/ShtScadYRV" target="_blank">discord.gg/ShtScadYRV</a>
+      </li>
+      <li class="project-item">
+        <strong>Moderatore</strong> per Moon Community (ex): 
+        <a href="https://discord.gg/NscV8S2seG" target="_blank">discord.gg/NscV8S2seG</a>
+      </li>
     </ul>
-    <p><a href="progetti.html" class="btn">Progetti</a> <a href="lavori.html" class="btn">Lavori</a></p>
-    <p><a href="contacts.html" class="btn">Contattami</a></p>
+    
+    <div class="btn-container">
+      <a href="progetti.html" class="btn">I Miei Progetti</a>
+      <a href="lavori.html" class="btn">Lavori Recenti</a>
+      <a href="contacts.html" class="btn btn-outline">Contattami</a>
+    </div>
   </div>
 </body>
 </html>
