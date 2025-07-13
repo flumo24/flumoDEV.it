@@ -8,11 +8,15 @@
     body {
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       line-height: 1.6;
-      color: #1a1a1a;
+      color: #222;
       background-color: #f9f9f9;
       margin: 0 auto;
       max-width: 800px;
-      padding: 2rem;
+      padding: 2rem 1rem;
+    }
+    
+    main {
+      padding: 0 1rem;
     }
     
     h1 {
@@ -20,9 +24,11 @@
       border-bottom: 2px solid #e2e8f0;
       padding-bottom: 0.5rem;
       margin-top: 2rem;
+      letter-spacing: 0.03em;
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      will-change: transform, opacity;
     }
 
     h1.visible {
@@ -43,10 +49,11 @@
       border-radius: 6px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.05);
       border-left: 3px solid #2563eb;
-      
+      max-width: 100%;
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      will-change: transform, opacity;
     }
 
     .project-item.visible {
@@ -64,46 +71,61 @@
       transition: color 0.3s ease;
     }
     
-    .back-link:hover {
+    .back-link:hover,
+    .back-link:focus {
       color: #1d4ed8;
       text-decoration: underline;
+      outline: none;
+    }
+
+    .back-link:focus-visible {
+      outline: 3px solid #1d4ed8;
+      outline-offset: 3px;
     }
     
     @media (max-width: 600px) {
       body {
-        padding: 1rem;
+        padding: 1rem 0.5rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <main class="container">
     <h1 class="animate-on-scroll">I Miei Progetti</h1>
     
     <ul class="project-list">
-      <li class="project-item animate-on-scroll">
-        <strong>Texture pack PvP custom</strong>
-        <p>Pack di texture ottimizzato per il PvP con design unici e personalizzati</p>
+      <li class="project-item animate-on-scroll" style="transition-delay: 0.1s;">
+        <article>
+          <strong>Texture pack PvP custom</strong>
+          <p>Pack di texture ottimizzato per il PvP con design unici e personalizzati</p>
+        </article>
       </li>
-      <li class="project-item animate-on-scroll">
-        <strong>Plugin personalizzati Minecraft</strong>
-        <p>Sviluppo di plugin Java per server Minecraft con funzionalità su misura</p>
+      <li class="project-item animate-on-scroll" style="transition-delay: 0.2s;">
+        <article>
+          <strong>Plugin personalizzati Minecraft</strong>
+          <p>Sviluppo di plugin Java per server Minecraft con funzionalità su misura</p>
+        </article>
       </li>
-      <li class="project-item animate-on-scroll">
-        <strong>Bot Discord su misura</strong>
-        <p>Creazione di bot Discord con comandi personalizzati per la gestione community</p>
+      <li class="project-item animate-on-scroll" style="transition-delay: 0.3s;">
+        <article>
+          <strong>Bot Discord su misura</strong>
+          <p>Creazione di bot Discord con comandi personalizzati per la gestione community</p>
+        </article>
       </li>
-      <li class="project-item animate-on-scroll">
-        <strong>Siti web HTML/CSS</strong>
-        <p>Realizzazione di pagine web responsive e ottimizzate</p>
+      <li class="project-item animate-on-scroll" style="transition-delay: 0.4s;">
+        <article>
+          <strong>Siti web HTML/CSS</strong>
+          <p>Realizzazione di pagine web responsive e ottimizzate</p>
+        </article>
       </li>
     </ul>
     
     <a href="index.html" class="back-link">← Torna alla home</a>
-  </div>
+  </main>
 
   <script>
-    // Animazione al scroll usando Intersection Observer
+    // Animazione al scroll con delay (staggering)
     document.addEventListener('DOMContentLoaded', () => {
       const elements = document.querySelectorAll('.animate-on-scroll');
       
