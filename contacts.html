@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contatti - flumo24 | Sviluppatore Minecraft</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contattami - flumo24</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
   <style>
     :root {
@@ -11,24 +11,17 @@
       --primary-dark: #2563eb;
       --dark: #1e293b;
       --light: #f8fafc;
-      --gray: #64748b;
-      --light-gray: #e2e8f0;
-      --border: #cbd5e1;
+      --border: #e2e8f0;
     }
     
     body {
       font-family: 'Inter', sans-serif;
       line-height: 1.6;
-      color: var(--dark);
       background-color: var(--light);
-      margin: 0;
-      padding: 0;
-    }
-    
-    .container {
+      color: var(--dark);
       max-width: 600px;
-      margin: 3rem auto;
-      padding: 0 1.5rem;
+      margin: 0 auto;
+      padding: 2rem;
     }
     
     h1 {
@@ -53,7 +46,7 @@
       background: white;
       padding: 2rem;
       border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
     
     .form-group {
@@ -64,7 +57,6 @@
       display: block;
       margin-bottom: 0.5rem;
       font-weight: 500;
-      color: var(--dark);
     }
     
     input, textarea {
@@ -72,9 +64,8 @@
       padding: 0.75rem;
       border: 1px solid var(--border);
       border-radius: 6px;
-      font-family: 'Inter', sans-serif;
+      font-family: inherit;
       font-size: 1rem;
-      transition: border-color 0.2s;
     }
     
     input:focus, textarea:focus {
@@ -84,12 +75,12 @@
     }
     
     textarea {
-      min-height: 120px;
+      min-height: 150px;
       resize: vertical;
     }
     
     .submit-btn {
-      background-color: var(--primary);
+      background: var(--primary);
       color: white;
       border: none;
       padding: 0.75rem 1.5rem;
@@ -101,7 +92,7 @@
     }
     
     .submit-btn:hover {
-      background-color: var(--primary-dark);
+      background: var(--primary-dark);
       transform: translateY(-1px);
     }
     
@@ -117,14 +108,23 @@
       text-decoration: underline;
     }
     
-    @media (max-width: 640px) {
-      .container {
-        margin: 1.5rem auto;
-      }
-      
-      .contact-form {
-        padding: 1.5rem;
-      }
+    .status-message {
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 6px;
+      display: none;
+    }
+    
+    .success {
+      background: #f0fdf4;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+    
+    .error {
+      background: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
     }
   </style>
 </head>
@@ -133,9 +133,11 @@
     <h1>Contattami</h1>
     
     <div class="contact-form">
-      <form action="https://formspree.io/f/mgebwrzy" method="POST">
-        <input type="hidden" name="_replyto" value="lucamarinaro2012@gmail.com">
+      <form id="contactForm" action="https://formsubmit.co/lucamarinaro2012@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="Nuovo messaggio da flumo24.it">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://tuosito.com/thanks.html">
+        <input type="text" name="_honey" style="display:none">
         
         <div class="form-group">
           <label for="name">Nome</label>
@@ -152,39 +154,52 @@
           <textarea id="message" name="message" required></textarea>
         </div>
         
+        <div id="statusMessage" class="status-message"></div>
+        
         <button type="submit" class="submit-btn">Invia Messaggio</button>
       </form>
     </div>
     
     <a href="index.html" class="back-link">← Torna alla home</a>
   </div>
-  
-  <!-- Formspree script per garantire la consegna -->
+
   <script>
-    document.querySelector('form').addEventListener('submit', function(e) {
+    const form = document.getElementById('contactForm');
+    const statusMessage = document.getElementById('statusMessage');
+    
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const form = e.target;
-      const formData = new FormData(form);
       
-      fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      })
-      .then(response => {
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Invio in corso...';
+      
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
         if (response.ok) {
-          alert('Messaggio inviato con successo!');
+          statusMessage.textContent = 'Messaggio inviato con successo!';
+          statusMessage.className = 'status-message success';
+          statusMessage.style.display = 'block';
           form.reset();
         } else {
-          throw new Error('Errore nell\'invio');
+          throw new Error('Errore nel server');
         }
-      })
-      .catch(error => {
-        alert('Si è verificato un errore. Per favore contattami direttamente a lucamarinaro2012@gmail.com');
-        console.error(error);
-      });
+      } catch (error) {
+        statusMessage.textContent = 'Errore nell\'invio. Puoi contattarmi direttamente a lucamarinaro2012@gmail.com';
+        statusMessage.className = 'status-message error';
+        statusMessage.style.display = 'block';
+        console.error('Error:', error);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Invia Messaggio';
+      }
     });
   </script>
 </body>
