@@ -25,7 +25,7 @@
   <!-- Favicon -->
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
-  <!-- Preload Fonts -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -41,18 +41,6 @@
     gtag('config', 'G-XXXXXXXXXX', { anonymize_ip: true });
   </script>
 
-  <!-- Anti-Bot / Honeypot Field (invisibile) -->
-  <style>
-    .hidden-input {
-      position: absolute;
-      left: -10000px;
-      top: auto;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
-    }
-  </style>
-
   <!-- Google Translate -->
   <script defer src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   <script defer>
@@ -65,7 +53,18 @@
     }
   </script>
 
-  <!-- CSS Stili -->
+  <!-- Honeypot Anti-Bot -->
+  <style>
+    .hidden-input {
+      position: absolute;
+      left: -10000px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+  </style>
+
+  <!-- CSS Design -->
   <style>
     :root {
       --primary: #3b82f6;
@@ -75,25 +74,11 @@
       --gray: #64748b;
       --light-gray: #e2e8f0;
     }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --light: #0f172a;
-        --dark: #f1f5f9;
-        --light-gray: #334155;
-        --gray: #94a3b8;
-      }
-      body {
-        background-color: var(--light);
-        color: var(--dark);
-      }
-      section.bio {
-        background-color: #1e293b;
-        color: var(--dark);
-      }
-    }
+
     *, *::before, *::after {
       box-sizing: border-box;
     }
+
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
@@ -104,43 +89,50 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
+
     a {
       color: var(--primary);
       text-decoration: none;
       transition: color 0.2s ease-in-out;
     }
+
     a:hover, a:focus {
       color: var(--primary-dark);
       outline: none;
     }
+
     .container {
       max-width: 800px;
       margin: 4rem auto;
       padding: 0 1.5rem;
     }
+
     header.profile-header {
       text-align: center;
       margin-bottom: 2.5rem;
     }
+
     header.profile-header h1 {
       font-size: 2.5rem;
       font-weight: 700;
       color: var(--primary);
-      margin: 0 0 0.5rem 0;
+      margin-bottom: 0.5rem;
     }
+
     header.profile-header .tagline {
       font-size: 1.125rem;
       color: var(--gray);
-      margin: 0 0 1.5rem 0;
+      margin-bottom: 1.5rem;
     }
+
     .location {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
       color: var(--gray);
       font-size: 1rem;
-      user-select: none;
     }
+
     .location svg {
       width: 1em;
       height: 1em;
@@ -150,6 +142,7 @@
       stroke-linejoin: round;
       flex-shrink: 0;
     }
+
     section.bio {
       background-color: #fff;
       padding: 1.5rem 1.75rem;
@@ -157,32 +150,36 @@
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
       margin-bottom: 2rem;
     }
+
     section.bio p, section.bio ul {
-      margin-top: 0;
-      margin-bottom: 1rem;
+      margin: 0 0 1rem 0;
       color: var(--dark);
       font-size: 1rem;
     }
+
     section.bio ul {
       padding-left: 1.25rem;
     }
+
     section.bio ul li {
       margin-bottom: 0.5rem;
     }
+
     h2 {
       font-size: 1.5rem;
       font-weight: 600;
       color: var(--primary-dark);
-      margin-top: 2rem;
-      margin-bottom: 1rem;
+      margin: 2rem 0 1rem 0;
       border-bottom: 2px solid var(--light-gray);
       padding-bottom: 0.5rem;
     }
+
     ul.projects-list {
       list-style: none;
       padding-left: 0;
-      margin: 0 0 2rem 0;
+      margin-bottom: 2rem;
     }
+
     li.project-item {
       background-color: rgba(59, 130, 246, 0.05);
       border-left: 3px solid var(--primary);
@@ -190,6 +187,7 @@
       margin-bottom: 1rem;
       border-radius: 0 4px 4px 0;
     }
+
     nav.btn-container {
       display: flex;
       flex-wrap: wrap;
@@ -197,6 +195,7 @@
       margin: 2rem 0 4rem 0;
       justify-content: center;
     }
+
     .btn {
       display: inline-block;
       padding: 0.75rem 1.5rem;
@@ -204,52 +203,58 @@
       font-weight: 500;
       text-align: center;
       cursor: pointer;
-      user-select: none;
       transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     }
+
     .btn-primary {
       background-color: var(--primary);
       color: #fff;
       border: none;
     }
+
     .btn-primary:hover, .btn-primary:focus {
       background-color: var(--primary-dark);
       transform: translateY(-2px);
       box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
-      outline: none;
     }
+
     .btn-outline {
       background-color: transparent;
       color: var(--primary);
       border: 2px solid var(--primary);
     }
+
     .btn-outline:hover, .btn-outline:focus {
       background-color: rgba(59, 130, 246, 0.1);
-      outline: none;
     }
+
     @media (max-width: 640px) {
       .container {
         margin: 2rem auto;
         padding: 0 1rem;
       }
+
       header.profile-header h1 {
         font-size: 2rem;
       }
+
       nav.btn-container {
         flex-direction: column;
         gap: 0.75rem;
       }
+
       .btn {
         width: 100%;
       }
     }
   </style>
 </head>
+
 <body>
   <!-- Google Translate widget -->
   <div id="google_translate_element" style="position: fixed; top: 1rem; right: 1rem; z-index: 1000;"></div>
 
-  <main class="container" lang="it" role="main">
+  <main class="container" role="main">
     <header class="profile-header">
       <h1>flumo24</h1>
       <p class="tagline">Sviluppatore Minecraft &amp; Manager Community</p>
@@ -293,7 +298,7 @@
       <a href="contacts.html" class="btn btn-outline">Contattami</a>
     </nav>
 
-    <!-- Honeypot anti-bot field -->
+    <!-- Honeypot anti-bot -->
     <form class="hidden-input" aria-hidden="true" tabindex="-1" autocomplete="off">
       <input type="text" name="bot-field" tabindex="-1" autocomplete="off" />
     </form>
